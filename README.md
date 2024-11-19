@@ -4,6 +4,8 @@
 # Motion Lab Learning Report Week - 0 🚀
 Repository ini berisi dokumentasi perjalanan pembelajaran selama minggu pertama internship di Motion Lab.
 
+**Fokus Minggu Ini:** Penguasaan Git, GitHub, dan SSH.
+
 ## Daftar Isi 📚
 1. [Penjelasan Singkat](#penjelasan-singkat) - Apa itu Git?
 2. [Perintah Dasar](#perintah-dasar) - Perintah penting dalam Git.
@@ -32,8 +34,8 @@ Berikut adalah perintah-perintah dasar yang biasa digunakan:
 | `git branch`     | Menampilkan daftar branch atau membuat branch baru.  |
 | `git checkout <branch>` | Berpindah ke branch lain.               |
 | `git merge <branch>` | Menggabungkan branch ke branch aktif.       |
-| `git log`        | Menampilkan riwayat(history) commit.           |
-| `git status`     | Menampilkan status file di repository lokal.    |
+| `git log`        | Menampilkan daftar commit sebelumnya beserta detailnya (hash, penulis, waktu).           |
+| `git status`     | Menunjukkan file yang telah dimodifikasi tetapi belum di-commit.    |
 
 ### Penjelasan SSH
 SSH (Secure Shell) adalah cara aman untuk berkomunikasi antara komputermu dan server (seperti GitHub). Dengan SSH, kamu tidak perlu mengetik username dan password setiap kali berinteraksi dengan repository. Sebagai gantinya, kamu menggunakan "kunci SSH" (SSH key) yang terdiri dari dua bagian:
@@ -54,7 +56,7 @@ ssh-keygen -t rsa -b 4096 -C "email@example.com"
 ssh-add ~/.ssh/id_rsa
 ```
 3. Salin public key ke GitHub (Settings > SSH and GPG Keys).
-4. Tempel public key ke sana
+4. Tempel public key ke GitHub pada menu **Settings > SSH and GPG Keys**.
 5. Jalankan:
 ```
 ssh -T git@github.com
@@ -64,4 +66,4 @@ untuk memastikan koneksi berhasil.
 ### Penutup
 Selamat menggunakan Git dan GitHub! Jika ada kendala atau masukan, jangan sungkan untuk berbagi. Saya percaya bahwa kolaborasi dan pembelajaran bersama adalah kunci untuk berkembang. 🚀
 
-Untuk pertanyaan atau diskusi, hubungi saya di [GitHub Issues](https://github.com/justUpi/repo/issues) atau email saya di upijangkung12@gmail.com.  
+Jika kamu ingin berkontribusi atau berdiskusi, hubungi saya melalui [GitHub Issues](https://github.com/justUpi/repo/issues) atau email saya di upijangkung12@gmail.com.  
