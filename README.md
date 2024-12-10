@@ -4,7 +4,7 @@
 
 Ini adalah proyek Flutter yang menampilkan **desain modern UI untuk aplikasi online shop**. Aplikasi ini memiliki design yang bersih dan responsif, cocok untuk aplikasi e-commerce. Implementasi saat ini berfokus pada **silicing UI** sebagai bagian dari tugas **Motion Lab**, dan belum memiliki fungsi backend.
 
-##✨ Fitur
+## ✨ Fitur
 
 - **Splash Screen:**
   - Layar pembuka yang menarik yang muncul saat aplikasi diluncurkan.
