@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_ui/pages/home_page.dart';
+import 'package:shop_ui/pages/main_screen.dart';
 import 'package:shop_ui/pages/register_page.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                            builder: (context) => const MainScreen()));
                   },
                 ),
                 Row(
