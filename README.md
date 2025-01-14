@@ -63,3 +63,48 @@ Ini adalah proyek Flutter yang menampilkan **desain modern UI untuk aplikasi onl
   - Stateless dan Stateful Widgets.
   - GridView untuk menampilkan produk.
 - **GetX**: State management untuk kontrol kuantitas item.
+
+## Konversi Proyek ke Pola GetX
+
+### Ringkasan
+Proyek ini adalah aplikasi Flutter yang telah di-refactor untuk menerapkan pola **GetX**. Fokus utama dari refactoring ini adalah:
+- Mengonversi struktur proyek agar sesuai dengan pola GetX.
+- Memisahkan logika antarmuka pengguna (UI) dan logika bisnis menggunakan controller.
+- Memastikan aplikasi lebih mudah untuk dikembangkan dan dipelihara di masa depan.
+
+### Perubahan yang Dilakukan
+1. **HomePage**:
+   - Di-refactor untuk menggunakan `HomeController` yang mengelola logika UI seperti kategori dan navigasi.
+   - Semua widget stateful dikonversi menjadi widget stateless.
+   - Menggunakan GetX untuk manajemen state.
+
+2. **DetailPage**:
+   - Di-refactor untuk menggunakan `DetailController` yang mengelola detail produk dan aksi seperti "Add to Bag".
+   - Reaktivitas ditingkatkan dengan menggunakan `Obx` untuk pembaruan dinamis.
+
+3. **Umum**:
+   - Menggunakan **GetX** untuk manajemen state dan navigasi.
+   - Navigasi disederhanakan dengan `Get.to` dan `Get.back`.
+
+### Cara Menjalankan
+1. Pastikan Flutter telah terinstal dan dikonfigurasi di perangkat Anda.
+2. Clone repository ini dan navigasi ke folder proyek:
+   ```bash
+   git clone <repository-link>
+   cd <project-folder>
+   ```
+3. Instal dependensi:
+   ```bash
+   flutter pub get
+   ```
+4. Jalankan aplikasi:
+   ```bash
+   flutter run
+   ```
+
+### Dependensi
+- **Flutter**: Versi 3.x atau lebih baru.
+- **GetX**: ^4.6.5
+
+### Kredit
+Proyek ini diselesaikan sebagai bagian dari tugas Motion Lab. Terima kasih kepada tim atas dukungan dan bimbingannya.

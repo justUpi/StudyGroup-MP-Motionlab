@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shop_ui/pages/main_screen.dart';
-import 'package:shop_ui/pages/register_page.dart';
+import 'package:get/get.dart';
+import 'package:shop_ui/controller/login_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_ui/widgets/custom_textfield.dart';
 
 class LoginPage extends StatelessWidget {
+  final LoginController controller = Get.put(LoginController());
   LoginPage({super.key});
-
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +53,13 @@ class LoginPage extends StatelessWidget {
                   height: 30.0,
                 ),
                 CustomTextfield(
-                  controller: emailController,
+                  controller: controller.emailController,
                   name: 'Email',
                   prefixIcon: Icons.email_outlined,
                   inputType: TextInputType.emailAddress,
                 ),
                 CustomTextfield(
-                  controller: passController,
+                  controller: controller.passController,
                   name: 'Password',
                   prefixIcon: Icons.lock_outlined,
                   inputType: TextInputType.text,
@@ -75,6 +73,7 @@ class LoginPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   splashColor: Colors.green.shade700,
+                  onTap: controller.login,
                   child: Ink(
                     width: double.infinity,
                     height: 50.0,
@@ -95,24 +94,13 @@ class LoginPage extends StatelessWidget {
                       ),
                     )),
                   ),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainScreen()));
-                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Don\'t have an account?'),
                     TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
-                      },
+                      onPressed: controller.goToRegister,
                       child: Text(
                         'Regist',
                         style: GoogleFonts.roboto(

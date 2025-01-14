@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shop_ui/widgets/custom_textfield.dart';
-import 'package:shop_ui/pages/login_page.dart';
+import 'package:shop_ui/controller/register_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
 
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-  final confrmPassController = TextEditingController();
+  final RegisterController controller = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,27 +45,27 @@ class RegisterPage extends StatelessWidget {
                   height: 50.0,
                 ),
                 CustomTextfield(
-                  controller: nameController,
+                  controller: controller.nameController,
                   name: 'Full Name',
                   prefixIcon: Icons.person_outlined,
                   inputType: TextInputType.name,
                   textCapitalization: TextCapitalization.words,
                 ),
                 CustomTextfield(
-                  controller: emailController,
+                  controller: controller.emailController,
                   name: 'Email',
                   prefixIcon: Icons.email_outlined,
                   inputType: TextInputType.emailAddress,
                 ),
                 CustomTextfield(
-                  controller: passController,
+                  controller: controller.passController,
                   name: 'Password',
                   prefixIcon: Icons.lock_outlined,
                   inputType: TextInputType.text,
                   obscureText: true,
                 ),
                 CustomTextfield(
-                  controller: passController,
+                  controller: controller.confirmPassController,
                   name: 'Password',
                   prefixIcon: Icons.lock_outlined,
                   inputType: TextInputType.text,
@@ -81,6 +79,7 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   splashColor: Colors.green.shade700,
+                  onTap: controller.register,
                   child: Ink(
                     width: double.infinity,
                     height: 50.0,
@@ -101,22 +100,13 @@ class RegisterPage extends StatelessWidget {
                       ),
                     )),
                   ),
-                  onTap: () {
-                    Navigator.pop(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
-                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Already have an account?'),
                     TextButton(
-                      onPressed: () {
-                        Navigator.pop(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
-                      },
+                      onPressed: controller.goToLogin,
                       child: Text(
                         'Login',
                         style: GoogleFonts.roboto(
