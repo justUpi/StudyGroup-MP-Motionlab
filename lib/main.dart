@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shop_ui/pages/detail_page.dart';
-import 'package:shop_ui/pages/login_page.dart';
-import 'package:shop_ui/pages/main_screen.dart';
-import 'package:shop_ui/pages/register_page.dart';
+import 'package:shop_ui/app/common/theme/app_theme.dart';
+import 'package:shop_ui/app/modules/cart/controllers/cart_controller.dart';
+import 'package:shop_ui/app/routes/app_pages.dart';
 
 void main() {
-  runApp(const MyApp());
+  Get.put(CartController());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Shop UI',
-      initialRoute: '/login',
-      getPages: [
-        GetPage(name: ('/login'), page: () => LoginPage()),
-        GetPage(name: ('/register'), page: () => RegisterPage()),
-        GetPage(name: ('/home'), page: () => MainScreen()),
-        GetPage(name: ('/detail'), page: () => DetailPage()),
-      ],
+    return ScreenUtilInit(
+      designSize: const Size(430, 932),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightMode,
+          darkTheme: AppTheme.darkMode,
+          themeMode: ThemeMode.system,
+          initialRoute: AppPages.INITIAL,
+          getPages: AppPages.routes,
+        );
+      },
     );
   }
 }

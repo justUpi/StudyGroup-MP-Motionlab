@@ -67,18 +67,23 @@ Ini adalah proyek Flutter yang menampilkan **desain modern UI untuk aplikasi onl
 ## Konversi Proyek ke Pola GetX
 
 ### Ringkasan
+
 Proyek ini adalah aplikasi Flutter yang telah di-refactor untuk menerapkan pola **GetX**. Fokus utama dari refactoring ini adalah:
+
 - Mengonversi struktur proyek agar sesuai dengan pola GetX.
 - Memisahkan logika antarmuka pengguna (UI) dan logika bisnis menggunakan controller.
 - Memastikan aplikasi lebih mudah untuk dikembangkan dan dipelihara di masa depan.
 
 ### Perubahan yang Dilakukan
+
 1. **HomePage**:
+
    - Di-refactor untuk menggunakan `HomeController` yang mengelola logika UI seperti kategori dan navigasi.
    - Semua widget stateful dikonversi menjadi widget stateless.
    - Menggunakan GetX untuk manajemen state.
 
 2. **DetailPage**:
+
    - Di-refactor untuk menggunakan `DetailController` yang mengelola detail produk dan aksi seperti "Add to Bag".
    - Reaktivitas ditingkatkan dengan menggunakan `Obx` untuk pembaruan dinamis.
 
@@ -86,7 +91,21 @@ Proyek ini adalah aplikasi Flutter yang telah di-refactor untuk menerapkan pola 
    - Menggunakan **GetX** untuk manajemen state dan navigasi.
    - Navigasi disederhanakan dengan `Get.to` dan `Get.back`.
 
+## Working with API 🔥
+
+### Perubahan yang dilakukan:
+
+1. Mengonversi project menjadi GetX Pattern menggunakan Get CLI.
+2. Mengubah seluruh UI menjadi Stateless Widget.
+3. Memindahkan semua logic dari UI ke Controller.
+4. Membuat Service API untuk fitur:
+   - Get All Products by Category
+   - Get Category List
+   - Get Single Product
+5. Mengganti data dummy dengan data dari API.
+
 ### Cara Menjalankan
+
 1. Pastikan Flutter telah terinstal dan dikonfigurasi di perangkat Anda.
 2. Clone repository ini dan navigasi ke folder proyek:
    ```bash
@@ -103,8 +122,10 @@ Proyek ini adalah aplikasi Flutter yang telah di-refactor untuk menerapkan pola 
    ```
 
 ### Dependensi
+
 - **Flutter**: Versi 3.x atau lebih baru.
 - **GetX**: ^4.6.5
 
 ### Kredit
+
 Proyek ini diselesaikan sebagai bagian dari tugas Motion Lab. Terima kasih kepada tim atas dukungan dan bimbingannya.
