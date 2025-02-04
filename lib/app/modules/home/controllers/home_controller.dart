@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shop_ui/app/data/models/product_model.dart';
+import 'package:shop_ui/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:shop_ui/app/utils/data_dummy.dart';
 import 'package:shop_ui/service/product_service.dart';
 
@@ -8,13 +9,17 @@ import '../../../data/models/product_model_api.dart';
 class HomeController extends GetxController {
   String selectedCategory = 'All';
   List<ProductModel> filteredProducts = [];
-  var product = Product().obs;
-  var isLoading = true.obs;
-  var categories = <String>[].obs;
+
+  RemoteDatasourceService remoteDatasourceService = RemoteDatasourceService();
+  bool isLoading = true;
+  Product product = Product();
+  List<String> categoryList = [];
+
   @override
   void onInit() {
     super.onInit();
-    fetchProduct();
+    getProduct();
+    getProductCategoryList();
     filteredProducts = DataDummy.listDummyProducts;
   }
 
@@ -33,21 +38,45 @@ class HomeController extends GetxController {
     }
   }
 
-  void fetchProduct() async {
-    product.value = await ProductService().getProducts() ?? Product();
-    isLoading.value = false;
-  }
-
-  void fetchCategories() async {
+  void getProduct() async {
     try {
-      isLoading.value = true;
-      categories.value = await ProductService().getCategories();
-    } catch (e) {
-      print('Error fetching categories: $e');
+      isLoading = true;
+      update();
+
+      product = await remoteDatasourceService.getProductsService();
+      update();
     } finally {
-      isLoading.value = false;
+      isLoading = false;
+      update();
     }
   }
 
+  void getProductCategoryList() async {
+    try {
+      isLoading = true;
+      update();
 
+      categoryList =
+          await remoteDatasourceService.getProductCategoryListService();
+      update();
+    } catch (e) {
+      Get.snackbar('Get Data Failed', e.toString());
+    } finally {
+      isLoading = false;
+      update();
+    }
+  }
+
+  final FavoriteController favoriteController = Get.find<FavoriteController>();
+
+  // Periksa apakah produk adalah favorit
+  bool isFavorite(int? productId) {
+    if (productId == null) return false;
+    return favoriteController.favoriteProducts.contains(productId);
+  }
+
+  // Toggle status favorit produk
+  void toggleFavorite(int productId) {
+    favoriteController.toggleFavorite(productId);
+  }
 }

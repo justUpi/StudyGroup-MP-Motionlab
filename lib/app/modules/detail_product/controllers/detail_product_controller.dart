@@ -8,12 +8,15 @@ class DetailProductController extends GetxController {
   var detailProduct = ProductElement().obs;
   var isLoading = true.obs;
   @override
-  onInit(){
+  onInit() {
     fetchDetailProduct();
     super.onInit();
   }
-  void fetchDetailProduct() async{
-  detailProduct.value =  await ProductService().getDetailsProducts(id: id) ?? ProductElement();
-  isLoading.value = false;
+
+  void fetchDetailProduct() async {
+    detailProduct.value =
+        await RemoteDatasourceService().getDetailsProducts(id: id) ??
+            ProductElement();
+    isLoading.value = false;
   }
 }

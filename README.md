@@ -104,6 +104,12 @@ Proyek ini adalah aplikasi Flutter yang telah di-refactor untuk menerapkan pola 
    - Get Single Product
 5. Mengganti data dummy dengan data dari API.
 
+## Local Storage Implementation
+
+### Ringkasan 
+
+menambahkan Local Storage untuk menyimpan status login, data favorit produk, serta fitur logout dan tampilan profil. Implementasi ini bertujuan agar aplikasi dapat mempertahankan data pengguna meskipun aplikasi di-restart.
+
 ### Cara Menjalankan
 
 1. Pastikan Flutter telah terinstal dan dikonfigurasi di perangkat Anda.
